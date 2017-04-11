@@ -16,4 +16,16 @@ defmodule Gamestate do
     Agent.get(gamestate, &(&1))
   end
 
+  def export_gamestate(gamestate, options) do
+    Export.export_gamestate gamestate, options
+  end
+
+  def load_gamestate(gamestate, options) do
+    Import.load_gamestate gamestate, options
+  end
+
+  def import_gamestate(gamestate, raw_gamedata) do
+    Import.import_gamestate gamestate, raw_gamedata
+  end
+
 end
