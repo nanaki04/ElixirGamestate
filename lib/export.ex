@@ -1,10 +1,16 @@
 defmodule Export do
 
-  def export_gamestate(gamestate, options) do
+  def save_gamestate(gamestate, options) do
     converted_data = convert_data gamestate, options
     user_data = options[:user_data]
     game_id = Gamestate.get_value gamestate, :game_id
     user_data.save_gamestate game_id, converted_data
+  end
+
+  def export_gamestate(gamestate, options) do
+    converted_data = convert_data gamestate, options
+    IO.inspect converted_data
+    converted_data
   end
 
   defp convert_data(gamestate, options) do

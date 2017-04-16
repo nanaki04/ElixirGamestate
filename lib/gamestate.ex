@@ -4,6 +4,12 @@ defmodule Gamestate do
     Agent.start_link(fn -> %{name: name} end)
   end
 
+  def start_link(game_id, options, link_options) do
+    {:ok, gamestate} = Agent.start_link(fn -> %{game_id: game_id} end, link_options)
+    load_gamestate gamestate, options
+    {:ok, gamestate}
+  end
+
   def update_value(gamestate, name, value) do
     Agent.update(gamestate, &Map.put(&1, name, value))
   end
@@ -18,6 +24,10 @@ defmodule Gamestate do
 
   def export_gamestate(gamestate, options) do
     Export.export_gamestate gamestate, options
+  end
+
+  def save_gamestate(gamestate, options) do
+    Export.save_gamestate gamestate, options
   end
 
   def load_gamestate(gamestate, options) do
