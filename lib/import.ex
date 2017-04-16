@@ -11,7 +11,7 @@ defmodule Import do
 
   defp get_data(gamestate, options) do
     game_id = Gamestate.get_value gamestate, :game_id
-    user_data = options[:user_data]
+    user_data = options[:userdata]
     user_data.get_gamestate game_id
   end
 

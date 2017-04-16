@@ -2,7 +2,7 @@ defmodule Export do
 
   def save_gamestate(gamestate, options) do
     converted_data = convert_data gamestate, options
-    user_data = options[:user_data]
+    user_data = options[:userdata]
     game_id = Gamestate.get_value gamestate, :game_id
     user_data.save_gamestate game_id, converted_data
   end
