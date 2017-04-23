@@ -1,4 +1,5 @@
 defmodule Import do
+  use ModuleConfig
 
   def load_gamestate(gamestate, options) do
     raw_gamestate = get_data gamestate, options
@@ -10,9 +11,10 @@ defmodule Import do
   end
 
   defp get_data(gamestate, options) do
-    game_id = Gamestate.get_value gamestate, :game_id
-    user_data = options[:userdata]
-    user_data.get_gamestate game_id
+    Gamestate.get_value(gamestate, :game_id)
+    |> UserData.get_gamestate
+    # user_data = options[:userdata]
+    # user_data.get_gamestate game_id
   end
 
   defp parse(gamestate, {name, [{_, _} | _] = value}) do

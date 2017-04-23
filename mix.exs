@@ -28,6 +28,8 @@ defmodule Gamestate.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:moduleConfig, git: "https://github.com/nanaki04/ModuleConfig.git"}
+    ]
   end
 end

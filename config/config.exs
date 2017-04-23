@@ -20,6 +20,10 @@ use Mix.Config
 #
 #     config :logger, level: :info
 #
+config :moduleConfig,
+  modules: [
+    {UserData, Mock.UserData}
+  ]
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
